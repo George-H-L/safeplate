@@ -1,0 +1,7 @@
+# Normalise line endings for text files.
+* text=auto
+
+# This must come AFTER the line above, because in .gitattributes the last matching
+# rule wins. Without it Git decides the PDF is text, rewrites its line endings on
+# checkout, and hands the next person a corrupted file.
+*.pdf binary

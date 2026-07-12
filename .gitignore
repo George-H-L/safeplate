@@ -1,0 +1,31 @@
+# Secrets. The API key lives here. Never commit it.
+# Copy .env.example to .env and put your own key in that.
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Run artefacts
+*.log
+nohup.out
+
+# Superseded. Everything in it is now in README.md, BUILD_LOG.md, or
+# docs/SafePlate_Architecture.pdf, so it is only here to be confusing.
+SafePlate_Explained.pdf
+
+
+# Deliberately NOT ignored, in case you were wondering:
+#
+#   cache.json    The model's readings of the menu, and the second model's checks
+#                 on those readings. This is committed on purpose. It is what lets
+#                 the app run with no API key and no network, and it is what the
+#                 test suite grades the model against. It holds menu labels and
+#                 nothing else. There is no personal data in it.
+#
+#   .streamlit/   Config only. It switches Streamlit's usage telemetry off, which
+#                 matters for a project that argues for data minimisation.

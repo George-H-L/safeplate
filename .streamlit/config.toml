@@ -1,0 +1,4 @@
+# Streamlit phones home with usage statistics by default. This app is about
+# handling health data carefully, so it does not.
+[browser]
+gatherUsageStats = false
