@@ -125,12 +125,6 @@ disk is the cache of label readings, which contains no personal data at all.
 Streamlit's usage tracking is switched off in `.streamlit/config.toml`.
 
 ## The other files
-
-- **`docs/SafePlate_Architecture.pdf`** is the long version: every architectural
-  decision, the alternative that was rejected, and why. It also explains the AI
-  engineering concepts it relies on (prompt injection, grounding, guardrails,
-  fail-closed design, LLM-as-judge and its limits) from scratch, so it does not assume
-  you have built with language models before.
 - **`BUILD_LOG.md`** is what broke while I was building this, what I changed, and what
   happened. It includes the two silent routes to a false green that I only found by
   going looking for them after every test was already passing, and the prompt
