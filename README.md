@@ -104,11 +104,11 @@ five:
    reading somehow reported no milk, the item cannot go green.
 5. only then, green
 
-Check 4 is the one that matters most and it is the one I added last. Without it the
-engine is deterministic but its input is entirely under the model's control, so a
-model that says "clean, nothing found" produces a green every time, and the model is
-really deciding after all. Check 4 is ordinary string matching on the raw text. It
-has no prompt in it, so there is nothing there to interfere with.
+Check 4 is the one I added last, and it is the one that closes the obvious hole.
+Without it the engine is deterministic but its input is entirely under the model's
+control, so a model that says "clean, nothing found" produces a green every time, and
+the model ends up deciding after all. Check 4 is ordinary string matching against the
+raw text, with no model involved in it.
 
 ## What it deliberately does not do
 
@@ -119,17 +119,18 @@ because a label cannot tell you that. This is exactly why an unclear label goes
 amber and says "ask the counter", rather than trying to be clever.
 
 It does not store the diner's allergies. They sit in memory for the session and are
-never written down. Allergies are health data, and the safest place to keep health
-data is nowhere. There are no accounts and no database. The only thing written to
-disk is the cache of label readings, which contains no personal data at all.
-Streamlit's usage tracking is switched off in `.streamlit/config.toml`.
+never written down. Allergies count as health data under UK GDPR, and there is no
+good reason for a menu board to be keeping any, so it keeps none. There are no
+accounts and no database. The only thing written to disk is the cache of label
+readings, which contains no personal data at all. Streamlit's usage tracking is
+switched off in `.streamlit/config.toml`.
 
 ## The other files
+
 - **`BUILD_LOG.md`** is what broke while I was building this, what I changed, and what
-  happened. It includes the two silent routes to a false green that I only found by
+  happened. It covers the two silent routes to a false green that I only found by
   going looking for them after every test was already passing, and the prompt
-  injection that successfully compromised one of the two models and still changed
-  nothing.
+  injection that did compromise one of the two models and still changed nothing.
 - **`cache.json`** is committed on purpose. It holds the model's readings of the menu
   and the second model's checks on them, which is what lets this run with no key. It
   contains menu labels and nothing else.
